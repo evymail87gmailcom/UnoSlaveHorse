@@ -9,8 +9,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Servo-1.1.5", "Libraries\Se
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wire-1.0", "Libraries\Wire\1.0\Wire\Wire-1.0.vcxitems", "{F63580B8-1C4E-44D2-8DC5-7C47A312CC4A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NewPing-1.9.1", "Libraries\NewPing\1.9.1\NewPing\NewPing-1.9.1.vcxitems", "{886F0615-377C-475D-9F3C-3F1FC99A326E}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Libraries\NewPing\1.9.1\NewPing\NewPing-1.9.1.vcxitems*{886f0615-377c-475d-9f3c-3f1fc99a326e}*SharedItemsImports = 9
+		Libraries\NewPing\1.9.1\NewPing\NewPing-1.9.1.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
 		Libraries\Servo\1.1.5\Servo\Servo-1.1.5.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
 		Libraries\Wire\1.0\Wire\Wire-1.0.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
 		Libraries\Servo\1.1.5\Servo\Servo-1.1.5.vcxitems*{d03f10c1-f68f-47d5-b8d6-d6aa474e6fb6}*SharedItemsImports = 9

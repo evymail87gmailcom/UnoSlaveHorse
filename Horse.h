@@ -1,41 +1,24 @@
 #pragma once
 #include <Arduino.h>
 #include <Servo.h>
-#include <Wire.h>
-class Horse {
-public:
-	Servo frontlegRight;
-	Servo backlegRight;
-	Servo frontlegLeft;
-	Servo backlegLeft;
+#include <NewPing.h>
 
-	// defines pins numbers
-	short trigPin;
-	short echoPin;
-	// defines variables
-	long duration;
-	short distance;
+class Horse {
+
+protected:
+
+	int distance;
 	int countSteps;
 	//Define soundsensors
-	short analogRightSound;
-	short analogLeftSound;
-	short digitalRightSound;
-	short digitalLeftSound;
-	short rightSound;
-	short leftSound;
-	short soundlevel;
-	int rightSensorValue;
-	int leftSensorValue;
-	int smoke;
-	int gasThres;
+	int soundLevel=0;
 	int gasSensorValues;
 	int blinkCount=0;
-	Horse() {};
-	void walk(int b);
 	void see();
 	void hear();
 	void smell();
-	void stop();
+public:
+	Horse() {};
+	void walk(int b);
 	void roam();
 	int getSteps();
 	int getDistancetoObject();

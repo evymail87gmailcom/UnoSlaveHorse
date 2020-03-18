@@ -1,6 +1,10 @@
 #include"Horse.h"
 
 void Horse::walk(int b) {
+	Servo frontlegRight;
+	Servo backlegRight;
+	Servo frontlegLeft;
+	Servo backlegLeft;
 	short i, j, k, l;
 	i = 0;
 	j = 0;
@@ -10,14 +14,117 @@ void Horse::walk(int b) {
 	a = b;
 	//countSteps = 0;
 	//Defines pins used by servos
-	frontlegLeft.attach(9);
-	frontlegRight.attach(10);
-	backlegLeft.attach(6);
+	//frontlegLeft.attach(9);
+	//frontlegRight.attach(10);
+	//backlegLeft.attach(6);
 	backlegRight.attach(5);
+	int middle = 90;
+	int endPoint = 80;
+	int stepDelay = 400;
+	int pos = 0;
 
 	if (a == 1) {
+		//Test 1
+		
+
+		backlegRight.write(0);
+		delay(30);
+		backlegRight.write(2);
+		delay(30);
+		backlegRight.write(4);
+		delay(30);
+		backlegRight.write(6);
+		delay(30);
+		backlegRight.write(8);
+		delay(30);
+		backlegRight.write(10);
+		delay(30);
+		backlegRight.write(12);
+		delay(30);
+		backlegRight.write(14);
+		delay(30);
+		backlegRight.write(16);
+		delay(30);
+		backlegRight.write(18);
+		delay(30);
+		backlegRight.write(20);
+		delay(30);
+		backlegRight.write(22);
+		delay(30);
+		backlegRight.write(24);
+		delay(30);
+		backlegRight.write(26);
+		delay(30);
+		backlegRight.write(28);
+		delay(30);
+		backlegRight.write(30);
+		delay(30);
+		backlegRight.write(32);
+		delay(30);
+		backlegRight.write(34);
+		delay(30);
+		backlegRight.write(36);
+		delay(30);
+		backlegRight.write(38);
+		delay(30);
+		backlegRight.write(40);
+		delay(30);
+		backlegRight.write(42);
+		delay(30);
+		backlegRight.write(44);
+		delay(30);
+		backlegRight.write(46);
+		delay(30);
+		backlegRight.write(48);
+		delay(30);
+		backlegRight.write(50);
+		delay(30);
+		backlegRight.write(52);
+		delay(30);
+		backlegRight.write(54);
+		delay(30);
+		backlegRight.write(56);
+		delay(30);
+		backlegRight.write(58);
+		delay(30);
+		backlegRight.write(60);
+		delay(30);
 
 		
+
+		/*
+		//Test 2
+		for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+  // in steps of 1 degree
+			backlegRight.write(pos);              // tell servo to go to position in variable 'pos'
+			delay(15);                       // waits 15ms for the servo to reach the position
+		}
+		for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+			backlegRight.write(pos);              // tell servo to go to position in variable 'pos'
+			delay(15);                       // waits 15ms for the servo to reach the position
+		}
+		*/
+		//Test 3
+		/*
+
+		frontlegLeft.write(middle);
+		backlegLeft.write(middle);
+		frontlegRight.write(middle);
+		backlegRight.write(middle);
+		delay(stepDelay);
+
+		frontlegLeft.write(middle - endPoint);
+		delay(stepDelay);
+		frontlegRight.write(middle + endPoint);
+		delay(stepDelay);
+		backlegLeft.write(middle - endPoint);
+		delay(stepDelay);
+		backlegRight.write(middle + endPoint);
+		delay(stepDelay);
+		*/
+
+		/*
+		//Test 4
 		frontlegLeft.write(0);
 		frontlegLeft.write(50);
 		frontlegLeft.write(0);
@@ -34,9 +141,10 @@ void Horse::walk(int b) {
 		backlegLeft.write(50);
 		backlegLeft.write(0);
 
-		
+		*/
 
 		/*
+		//Test 5
 		// Back leg right
 		for (i = 90; i >= 45; i - 2) {
 			backlegRight.write(i);
@@ -72,42 +180,24 @@ void Horse::walk(int b) {
 		}
 		*/
 		countSteps++;
+	
 	}
-	
+
 		a = 0;
-		frontlegLeft.detach();
-		frontlegRight.detach();
-		backlegLeft.detach();
-		backlegRight.detach();
+		//frontlegLeft.detach();
+		//frontlegRight.detach();
+		//backlegLeft.detach();
+		//backlegRight.detach();
 	
-	//countSteps++;
-}
+	}
 
 int Horse::getSteps() {
 	return countSteps;
 }
 void Horse::see() {
-	trigPin = 12;
-	echoPin = 13;
-	pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
-	pinMode(echoPin, INPUT); // Sets the echoPin as an Input
-	//Serial.begin(9600); // Starts the serial communication
-
-		// Clears the trigPin
-	digitalWrite(trigPin, LOW);
-	delayMicroseconds(2);
-	// Sets the trigPin on HIGH state for 10 micro seconds
-	digitalWrite(trigPin, HIGH);
-	delayMicroseconds(10);
-	digitalWrite(trigPin, LOW);
-	// Reads the echoPin, returns the sound wave travel time in microseconds
-	duration = pulseIn(echoPin, HIGH);
-	// Calculating the distance
-	distance = duration * 0.034 / 2;
-	// Prints the distance on the Serial Monitor
-	//Serial.print("Distance: ");
-	//Serial.println(distance);
-
+	
+	NewPing see(12, 13, 200);
+	distance = see.ping_cm();
 
 }
 int Horse::getDistancetoObject() {
@@ -115,89 +205,45 @@ int Horse::getDistancetoObject() {
 }
 
 void Horse::hear() {
+	short rightSound;
+	short leftSound;
+	int rightSensorValue;
+	int leftSensorValue;
 	rightSound = 8;
 	rightSensorValue = 0;
 
 	leftSound = 7;
 	leftSensorValue = 0;
 
-	
-	//Serial.begin(9600);
 	pinMode(rightSound, INPUT);
 	pinMode(leftSound, INPUT);
 
-
 	rightSensorValue = digitalRead(rightSound);
-	//Serial.print("RightSensorValue: ");
-	//Serial.println(rightSensorValue);
-
-
 	leftSensorValue = digitalRead(leftSound);
-	//Serial.print("AnalogLeftSensorValue: ");
-	//Serial.println(leftSensorValue);
-
-
+	if ((rightSensorValue == leftSensorValue) && (rightSensorValue > 0)) {
+		soundLevel = 1;
+	}
+	else soundLevel = 0;
 }
 int Horse::getSoundLevel() {
-	if ((rightSensorValue == leftSensorValue)&&(rightSensorValue>0)) {
-		return rightSensorValue;
-	}
-	else {
-		return 0;
-	};
+	return soundLevel;
 }
 
 void Horse::smell() {
-	smoke = A3;
+
+	int smoke = A3;
 	// Your threshold value
-	gasThres = 400;
+	int gasThres = 400;
 
 	pinMode(smoke, INPUT);
-	//Serial.begin(9600);
-
 	gasSensorValues = analogRead(smoke);
-	//Serial.print("Pin A3: ");
-	//Serial.println(gasSensorValues);
-	// Checks if it has reached the threshold value
-	/*
-	if (gasSensorValues > gasThres)
-	{
-		Serial.println("Check Air, and put yourself to safety!");
-	}
-	else
-	{
-		Serial.print("Smells good!");
-	}
-	*/
 	delay(100);
-
 }
 int Horse::getGasValues() {
-	//smell();
 	return gasSensorValues;
-	if (gasSensorValues > gasThres)
-	{
-		Serial.println("Check Air, and put yourself to safety!");
-	}
-	else
-	{
-		Serial.print("Smells good!");
-	}
 }
 
-void Horse::stop() {
-	if (distance == 20) {
-		frontlegLeft.write(0);
-		frontlegRight.write(0);
-		backlegLeft.write(0);
-		backlegRight.write(0);
 
-		frontlegLeft.detach();
-		frontlegRight.detach();
-		backlegLeft.detach();
-		backlegRight.detach();
-	}
-}
 
 void Horse::roam() {
 	
@@ -209,8 +255,6 @@ void Horse::roam() {
 
 void Horse::blinkTest(int a) {
 	pinMode(LED_BUILTIN, OUTPUT);
-	//float c = Wire.read();
-	//Serial.print(c);
 	digitalWrite(LED_BUILTIN, a);
 	blinkCount++;
 }
