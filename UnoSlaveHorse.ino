@@ -74,20 +74,7 @@ void receiveEvent(int howMany) {
 }
 
 // Function that executes whenever data is requested by master
+
 void requestEvent() {
 	myHorse.sendStuff();
-	//Wire.write(myHorse.getDistancetoObject());  
-	
-
-	//Wire.write(myHorse.getSteps());
-	
-	
-	//Wire.write(myHorse.getSoundLevel());
-	
-	
-	//Wire.write(myHorse.getBlinkCount());
-	
-	//Wire.write(myHorse.getGasValues());
-	
-
 }

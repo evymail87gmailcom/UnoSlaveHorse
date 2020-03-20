@@ -1,5 +1,5 @@
 #include"Horse.h"
-#include <iostream>
+
 using namespace std;
 void Horse::walk(int b) {
 
@@ -199,34 +199,13 @@ void Horse::doStuff(char a, int b) {
 }
 
 void Horse::sendStuff() {
-	vector<char>send;
-	char type;
-	
-	type = char(getDistancetoObject());
-	send.push_back(type);
-	send.push_back(',');
-	
-	type = char(getSteps());
-	send.push_back(type);
-	send.push_back(',');
-	
-	type = char(getSoundLevel());
-	send.push_back(type);
-	send.push_back(',');
+	int send[5] = {getDistancetoObject(),getSteps(),getSoundLevel(),getBlinkCount(),getGasValues()};
 
-	type = char(getBlinkCount());
-	send.push_back(type);
-	send.push_back(',');
-	
-	type = char(getGasValues());
-	send.push_back(type);
-	send.push_back(',');
-
-	for (int i = 0; i <= send.size(); i++)
+	for (int i = 0; i <= 5; i++)
 	{
 		Wire.write(send[i]);
 		Serial.print("Sent value: ");
-		Serial.println(i);
+		Serial.println(send[i]);
 	}
 	
 }

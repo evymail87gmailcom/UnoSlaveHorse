@@ -1,12 +1,11 @@
 #pragma once
-#include <iostream>
+
 #include <Arduino.h>
-#include <vector>
 #include <Servo.h>
 #include <NewPing.h>
 #include <Wire.h>
 
-using namespace std;
+
 class Horse {
 
 protected:
