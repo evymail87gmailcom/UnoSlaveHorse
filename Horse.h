@@ -1,11 +1,16 @@
 #pragma once
+#include <iostream>
 #include <Arduino.h>
+#include <vector>
 #include <Servo.h>
 #include <NewPing.h>
+#include <Wire.h>
 
+using namespace std;
 class Horse {
 
 protected:
+
 
 	int distance;
 	int countSteps;
@@ -13,11 +18,13 @@ protected:
 	int soundLevel=0;
 	int gasSensorValues;
 	int blinkCount=0;
+
+public:
+	
+	Horse() {};
 	void see();
 	void hear();
 	void smell();
-public:
-	Horse() {};
 	void walk(int b);
 	void roam();
 	int getSteps();
@@ -26,5 +33,8 @@ public:
 	int getGasValues();
 	void blinkTest(int a);
 	int getBlinkCount();
+	void doStuff(char a, int b);
+	void sendStuff();
+	
 	~Horse() {};
 };

@@ -1,194 +1,95 @@
 #include"Horse.h"
-
+#include <iostream>
+using namespace std;
 void Horse::walk(int b) {
-	Servo frontlegRight;
-	Servo backlegRight;
-	Servo frontlegLeft;
-	Servo backlegLeft;
-	short i, j, k, l;
-	i = 0;
-	j = 0;
-	k = 0;
-	l = 0;
-	int a = 0;
-	a = b;
-	//countSteps = 0;
-	//Defines pins used by servos
-	//frontlegLeft.attach(9);
-	//frontlegRight.attach(10);
-	//backlegLeft.attach(6);
-	backlegRight.attach(5);
-	int middle = 90;
-	int endPoint = 80;
-	int stepDelay = 400;
+
+	Servo frontlegRight, backlegRight, frontlegLeft, backlegLeft;
 	int pos = 0;
+	
+	Serial.println("backlegattached");
+	delay(3000);
+	if (b != 0) {
 
-	if (a == 1) {
-		//Test 1
+		Serial.println("Running function");
 		
-
-		backlegRight.write(0);
-		delay(30);
-		backlegRight.write(2);
-		delay(30);
-		backlegRight.write(4);
-		delay(30);
-		backlegRight.write(6);
-		delay(30);
-		backlegRight.write(8);
-		delay(30);
-		backlegRight.write(10);
-		delay(30);
-		backlegRight.write(12);
-		delay(30);
-		backlegRight.write(14);
-		delay(30);
-		backlegRight.write(16);
-		delay(30);
-		backlegRight.write(18);
-		delay(30);
-		backlegRight.write(20);
-		delay(30);
-		backlegRight.write(22);
-		delay(30);
-		backlegRight.write(24);
-		delay(30);
-		backlegRight.write(26);
-		delay(30);
-		backlegRight.write(28);
-		delay(30);
-		backlegRight.write(30);
-		delay(30);
-		backlegRight.write(32);
-		delay(30);
-		backlegRight.write(34);
-		delay(30);
-		backlegRight.write(36);
-		delay(30);
-		backlegRight.write(38);
-		delay(30);
-		backlegRight.write(40);
-		delay(30);
-		backlegRight.write(42);
-		delay(30);
-		backlegRight.write(44);
-		delay(30);
-		backlegRight.write(46);
-		delay(30);
-		backlegRight.write(48);
-		delay(30);
-		backlegRight.write(50);
-		delay(30);
-		backlegRight.write(52);
-		delay(30);
-		backlegRight.write(54);
-		delay(30);
-		backlegRight.write(56);
-		delay(30);
-		backlegRight.write(58);
-		delay(30);
-		backlegRight.write(60);
-		delay(30);
-
+		backlegRight.attach(5);
 		
-
-		/*
-		//Test 2
 		for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
-  // in steps of 1 degree
+												// in steps of 1 degree
 			backlegRight.write(pos);              // tell servo to go to position in variable 'pos'
 			delay(15);                       // waits 15ms for the servo to reach the position
 		}
+		delay(30);
 		for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
 			backlegRight.write(pos);              // tell servo to go to position in variable 'pos'
 			delay(15);                       // waits 15ms for the servo to reach the position
 		}
-		*/
-		//Test 3
-		/*
+		
+		Serial.println("BacklegRight moved!!");
+		Serial.println("Leg is detached!");
+		backlegRight.detach();
+		delay(30);
 
-		frontlegLeft.write(middle);
-		backlegLeft.write(middle);
-		frontlegRight.write(middle);
-		backlegRight.write(middle);
-		delay(stepDelay);
-
-		frontlegLeft.write(middle - endPoint);
-		delay(stepDelay);
-		frontlegRight.write(middle + endPoint);
-		delay(stepDelay);
-		backlegLeft.write(middle - endPoint);
-		delay(stepDelay);
-		backlegRight.write(middle + endPoint);
-		delay(stepDelay);
-		*/
-
-		/*
-		//Test 4
-		frontlegLeft.write(0);
-		frontlegLeft.write(50);
-		frontlegLeft.write(0);
-
-		backlegRight.write(0);
-		backlegRight.write(50);
-		backlegRight.write(0);
-
-		frontlegRight.write(0);
-		frontlegRight.write(50);
-		frontlegRight.write(0);
-
-		backlegLeft.write(0);
-		backlegLeft.write(50);
-		backlegLeft.write(0);
-
-		*/
-
-		/*
-		//Test 5
-		// Back leg right
-		for (i = 90; i >= 45; i - 2) {
-			backlegRight.write(i);
-			delay(150);
-			frontlegLeft.write(i);
-			delay(50);
+		frontlegRight.attach(10);
+		
+		for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+												// in steps of 1 degree
+			frontlegRight.write(pos);              // tell servo to go to position in variable 'pos'
+			delay(15);                       // waits 15ms for the servo to reach the position
 		}
-
-		for (k = i; k <= 90; k + 2)
-		{
-
-			backlegLeft.write(k);
-			delay(50);
-			frontlegRight.write(k);
-			delay(50);
+		delay(30);
+		for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+			frontlegRight.write(pos);              // tell servo to go to position in variable 'pos'
+			delay(15);                       // waits 15ms for the servo to reach the position
 		}
+		
+		Serial.println("FrontlegRight moved!!");
+		Serial.println("Leg is detached!");
+		frontlegRight.detach();
+		delay(30);
 
-
-		for (j = i; j <= 90; j + 2) {
-			backlegRight.write(j);
-			delay(50);
-			frontlegLeft.write(j);
-			delay(50);
+		backlegLeft.attach(6);
+		
+		for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+												// in steps of 1 degree
+			backlegLeft.write(pos);              // tell servo to go to position in variable 'pos'
+			delay(15);                       // waits 15ms for the servo to reach the position
 		}
-
-		for (l = j; l >= 30; l - 2)
-		{
-
-			backlegLeft.write(l);
-			delay(50);
-			frontlegRight.write(l);
-			delay(50);
+		delay(30);
+		for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+			backlegLeft.write(pos);              // tell servo to go to position in variable 'pos'
+			delay(15);                       // waits 15ms for the servo to reach the position
 		}
-		*/
+		
+		Serial.println("BacklegLeft moved!!");
+		Serial.println("Leg is detached!");
+		backlegLeft.detach();
+		delay(30);
+
+		frontlegLeft.attach(9);
+		
+		for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+												// in steps of 1 degree
+			frontlegLeft.write(pos);              // tell servo to go to position in variable 'pos'
+			delay(15);                       // waits 15ms for the servo to reach the position
+		}
+		delay(30);
+		for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+			frontlegLeft.write(pos);              // tell servo to go to position in variable 'pos'
+			delay(15);                       // waits 15ms for the servo to reach the position
+		}
+		
+		Serial.println("FrontLegLeft moved!!");
+		Serial.println("Leg is detached!");
+		frontlegLeft.detach();
+		delay(300);
 		countSteps++;
-	
+
+	}
+	else {
+		Serial.println("No steps were taken ");
 	}
 
-		a = 0;
-		//frontlegLeft.detach();
-		//frontlegRight.detach();
-		//backlegLeft.detach();
-		//backlegRight.detach();
-	
 	}
 
 int Horse::getSteps() {
@@ -248,16 +149,84 @@ int Horse::getGasValues() {
 void Horse::roam() {
 	
 	see();
+	delay(100);
 	hear();
+	delay(100);
 	smell();
+	delay(100);
+
+	Serial.print("distance: ");
+	Serial.println(getDistancetoObject());
+
+	//Uncomment these Serialprints for debugging
+	Serial.print("stepcount: ");
+	Serial.println(getSteps());
+
+	//Uncomment these Serialprints for debugging
+	Serial.print("SoundLevel: ");
+	Serial.println(getSoundLevel());
+
+	//Uncomment these Serialprints for debugging
+	Serial.print("BlinkCount: ");
+	Serial.println(getBlinkCount());
+
+	//Uncomment these Serialprints for debugging
+	Serial.print("Gasvalues: ");
+	Serial.println(getGasValues());
 	
 }
 
 void Horse::blinkTest(int a) {
 	pinMode(LED_BUILTIN, OUTPUT);
 	digitalWrite(LED_BUILTIN, a);
-	blinkCount++;
+	if (a == 1) {
+		blinkCount++;
+	}
 }
 int Horse::getBlinkCount() {
 	return blinkCount;
+}
+void Horse::doStuff(char a, int b) {
+	
+	if (a == '0') {
+		blinkTest(b);
+		delay(100);
+	}
+	if (a == '1') {
+		walk(b);
+		delay(100);
+	}
+}
+
+void Horse::sendStuff() {
+	vector<char>send;
+	char type;
+	
+	type = char(getDistancetoObject());
+	send.push_back(type);
+	send.push_back(',');
+	
+	type = char(getSteps());
+	send.push_back(type);
+	send.push_back(',');
+	
+	type = char(getSoundLevel());
+	send.push_back(type);
+	send.push_back(',');
+
+	type = char(getBlinkCount());
+	send.push_back(type);
+	send.push_back(',');
+	
+	type = char(getGasValues());
+	send.push_back(type);
+	send.push_back(',');
+
+	for (int i = 0; i <= send.size(); i++)
+	{
+		Wire.write(send[i]);
+		Serial.print("Sent value: ");
+		Serial.println(i);
+	}
+	
 }
