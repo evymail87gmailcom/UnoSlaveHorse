@@ -1,12 +1,11 @@
 
 #include "Horse.h"
-//#include <Wire.h>
 Horse myHorse;
 
 static char zero = '0';
 static char one = '0';
 static int two = 0;
-const int period1 = 10000;
+const int period1 = 25000;
 unsigned long currentTime1 = 0;
 
 const int period2 = 5000;
@@ -26,7 +25,7 @@ void setup() {
 void loop() {
 
 	if (period2 + currentTime2 <= millis()) {
-		myHorse.doStuff(one, two);
+		myHorse.blinkOrWalk(one, two);
 		currentTime2 = millis();
 	}
 
@@ -76,5 +75,5 @@ void receiveEvent(int howMany) {
 // Function that executes whenever data is requested by master
 
 void requestEvent() {
-	myHorse.sendStuff();
+	myHorse.sendSensorValues();
 }

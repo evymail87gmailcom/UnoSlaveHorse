@@ -1,6 +1,6 @@
 #include"Horse.h"
 
-using namespace std;
+
 void Horse::walk(int b) {
 
 	Servo frontlegRight, backlegRight, frontlegLeft, backlegLeft;
@@ -14,13 +14,13 @@ void Horse::walk(int b) {
 		
 		backlegRight.attach(5);
 		
-		for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+		for (pos = 0; pos <= 50; pos += 1) { // goes from 0 degrees to 180 degrees
 												// in steps of 1 degree
 			backlegRight.write(pos);              // tell servo to go to position in variable 'pos'
 			delay(15);                       // waits 15ms for the servo to reach the position
 		}
 		delay(30);
-		for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+		for (pos = 50; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
 			backlegRight.write(pos);              // tell servo to go to position in variable 'pos'
 			delay(15);                       // waits 15ms for the servo to reach the position
 		}
@@ -32,13 +32,13 @@ void Horse::walk(int b) {
 
 		frontlegRight.attach(10);
 		
-		for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+		for (pos = 0; pos <= 50; pos += 1) { // goes from 0 degrees to 180 degrees
 												// in steps of 1 degree
 			frontlegRight.write(pos);              // tell servo to go to position in variable 'pos'
 			delay(15);                       // waits 15ms for the servo to reach the position
 		}
 		delay(30);
-		for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+		for (pos = 50; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
 			frontlegRight.write(pos);              // tell servo to go to position in variable 'pos'
 			delay(15);                       // waits 15ms for the servo to reach the position
 		}
@@ -50,13 +50,13 @@ void Horse::walk(int b) {
 
 		backlegLeft.attach(6);
 		
-		for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+		for (pos = 0; pos <= 50; pos += 1) { // goes from 0 degrees to 180 degrees
 												// in steps of 1 degree
 			backlegLeft.write(pos);              // tell servo to go to position in variable 'pos'
 			delay(15);                       // waits 15ms for the servo to reach the position
 		}
 		delay(30);
-		for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+		for (pos = 50; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
 			backlegLeft.write(pos);              // tell servo to go to position in variable 'pos'
 			delay(15);                       // waits 15ms for the servo to reach the position
 		}
@@ -68,13 +68,13 @@ void Horse::walk(int b) {
 
 		frontlegLeft.attach(9);
 		
-		for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+		for (pos = 0; pos <= 50; pos += 1) { // goes from 0 degrees to 180 degrees
 												// in steps of 1 degree
 			frontlegLeft.write(pos);              // tell servo to go to position in variable 'pos'
 			delay(15);                       // waits 15ms for the servo to reach the position
 		}
 		delay(30);
-		for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+		for (pos = 50; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
 			frontlegLeft.write(pos);              // tell servo to go to position in variable 'pos'
 			delay(15);                       // waits 15ms for the servo to reach the position
 		}
@@ -96,10 +96,9 @@ int Horse::getSteps() {
 	return countSteps;
 }
 void Horse::see() {
-	
-	NewPing see(12, 13, 200);
+	//trig 12, echo 11
+	NewPing see(12, 11, 400);
 	distance = see.ping_cm();
-
 }
 int Horse::getDistancetoObject() {
 	return distance;
@@ -149,11 +148,11 @@ int Horse::getGasValues() {
 void Horse::roam() {
 	
 	see();
-	delay(100);
+	delay(1000);
 	hear();
-	delay(100);
+	delay(1000);
 	smell();
-	delay(100);
+	delay(1000);
 
 	Serial.print("distance: ");
 	Serial.println(getDistancetoObject());
@@ -186,7 +185,7 @@ void Horse::blinkTest(int a) {
 int Horse::getBlinkCount() {
 	return blinkCount;
 }
-void Horse::doStuff(char a, int b) {
+void Horse::blinkOrWalk(char a, int b) {
 	
 	if (a == '0') {
 		blinkTest(b);
@@ -198,7 +197,7 @@ void Horse::doStuff(char a, int b) {
 	}
 }
 
-void Horse::sendStuff() {
+void Horse::sendSensorValues() {
 	int send[5] = {getDistancetoObject(),getSteps(),getSoundLevel(),getBlinkCount(),getGasValues()};
 
 	for (int i = 0; i <= 5; i++)
